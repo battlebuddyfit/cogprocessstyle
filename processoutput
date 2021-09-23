@@ -1,0 +1,48 @@
+#Define processing style attributes
+
+def class_assimilation(prompt):
+ #Input assimilated statements, but leave out verbs, can be any verb, only code for key words
+        assimilation = ["If I", "then"]
+        assimilationScore = int(0)
+        for list in assimilation:
+            if list in prompt:
+                assimilationScore = assimilationScore + 1
+        return assimilationScore
+
+       
+
+def class_accommodation(prompt):
+        #Input accommodated statements, without verb
+        accommodation = ["some","most"]
+        accommodationScore = int(0)
+        for list in accommodation:
+            if list in prompt:
+                accommodationScore = accommodationScore + 1
+        return accommodationScore
+        
+
+def class_overaccom(prompt):
+        #input overaccommodated statements, without verbs 
+        overaccom = ["All", "everyone"]
+        overaccomScore = int(0)
+        for list in overaccom:
+            if list in prompt:
+                overaccomScore = overaccomScore + 1
+        return overaccomScore
+
+            
+prompt = input("Please Type your statement:", )
+assimilationScore = class_assimilation(prompt)
+accommodationScore = class_accommodation(prompt)
+overaccomScore = class_overaccom(prompt)
+
+#Processing style score percentage
+Assim_percent = (assimilationScore/(assimilationScore + accommodationScore + overaccomScore))
+Accom_percet = (accommodationScore/(assimilationScore + accommodationScore + overaccomScore))
+Overaccom_percent = (overaccomScore/(assimilationScore + accommodationScore + overaccomScore))
+
+
+print("Assimilation:", Assim_percent)
+print("Accommodation:", Accom_percet)
+print("Overaccommodation:", Overaccom_percent)
+
